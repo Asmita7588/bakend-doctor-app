@@ -7,7 +7,7 @@ const userValidator = Joi.object({
   //     "string.max": "firstName should not exceed 255 characters",
   //   }),
   firstName: Joi.string().min(2).max(30).required(),
-   lastName: Joi.string().min(2).max(30).required(),
+   lastName: Joi.string().min(2).max(30).optional(),
   email: Joi.string().email().required().max(255).messages({
     "string.email": "Valid email is required",
     "any.required": "Email is required",
