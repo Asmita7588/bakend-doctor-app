@@ -4,7 +4,8 @@ import * as userController from "../controller/userController.js";
 import { validateUser } from "../validations/user.validations.js";
 import * as  authMiddleware from "../middleware/authMiddleware.js"
 
-router.post("/", validateUser, userController.register);
+
+router.post("/",validateUser,authMiddleware.auth, authMiddleware.authorizeRole("ADMIN"), validateUser, userController.register);
 router.get("/", userController.fetchAllUsers);
 router.get("/:email", userController.fetchUserByEmail);
 // router.get("/:id", userController.fetchUserByID);

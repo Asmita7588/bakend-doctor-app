@@ -13,6 +13,7 @@ import appointmentRouter from "../routes/appointmentRoutes.js"
 
 const router = express.Router();
 
+
 router.use("/user", userRoutes)
 router.use("/auth", authRoutes)
 router.use("/doctor", doctorRoutes)
