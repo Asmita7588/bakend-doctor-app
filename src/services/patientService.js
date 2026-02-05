@@ -21,5 +21,5 @@ export const updatePatient = async (id, updateData) => {
 
 export const deletePatient = async (id) =>
 { 
-    await Patient.findByIdAndDelete(id);
+   return await Patient.findByIdAndDelete(id);
 }

@@ -9,5 +9,8 @@ invoiceRouter.get("/", invoiceController.fetchAllInvoices);
 invoiceRouter.get("/:id", invoiceController.fetchInvoiceById);
 invoiceRouter.patch("/:id", authMiddleware.auth, authMiddleware.authorizeRole("ADMIN", "RECEPTIONIST"), invoiceController.updateInvoiceDetails);
 invoiceRouter.delete("/:id",authMiddleware.auth, authMiddleware.authorizeRole("ADMIN", "RECEPTIONIST"), invoiceController.deleteInvoice);
+invoiceRouter.get("/pdf/:id",authMiddleware.auth, authMiddleware.authorizeRole("ADMIN", "RECEPTIONIST"), invoiceController.downloadInvoicePdf);
+
+
 
 export default invoiceRouter;

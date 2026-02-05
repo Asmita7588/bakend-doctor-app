@@ -34,7 +34,7 @@ export const login = async (req, res) => {
     };
     console.log(payload)
     const token = await generateToken.generateToken(payload);
-
+console.log(token)
     res.status(200).json({
       message: "User login successfully",
       user: {

@@ -2,8 +2,9 @@ import User from "../models/userModel.js";
 import { verifyToken } from "../utils/jwtUtils.js";
 export const auth = async (req, res, next) => {
   try {
+    
     const authHeader = req.headers.authorization;
-      
+      console.log(authHeader)
     if (!authHeader || !authHeader.startsWith("Bearer")) {
       return res.status(401).json({ message: "unauthorized" });
     }

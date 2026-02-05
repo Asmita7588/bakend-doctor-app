@@ -4,7 +4,7 @@ const invoiceSchema = new Schema(
     {
         patientId : {
         type : Schema.Types.ObjectId,
-         ref : "patient",
+         ref : "Patient",
          required : true,
         },
         paymentId : {

@@ -30,7 +30,7 @@ export const fetchInvoiceById = async (req, res) => {
 
 export const updateInvoiceDetails = async (req, res) => {
     try {
-        const Invoice = await InvoiceService.updateInvoice(req.params.id, req.body);
+        const Invoice = await InvoiceService.updateInvoice(req.params.id,req.body);
         if (!Invoice) return res.status(404).json({ message: "Invoice not found" });
         res.status(200).json({ success: true, data: Invoice });
     } catch (error) {
@@ -45,5 +45,28 @@ export const deleteInvoice = async (req, res) => {
         res.status(200).json({ success: true, message: "Invoice record deleted" });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+
+export const downloadInvoicePdf = async (req, res) => {
+    try {
+        const id  = req.params.id;
+        
+        const { pdfBuffer, invoice } = await InvoiceService.generateInvoicePdfBuffer(id);
+
+        res.set({
+            'Content-Type': 'application/pdf',
+            'Content-Disposition': `attachment; filename=invoice_${id}.pdf`,
+            'Content-Length': pdfBuffer.length,
+        });
+
+        return res.send(pdfBuffer);
+    } catch (error) {
+        console.error("PDF Error:", error);
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
 };

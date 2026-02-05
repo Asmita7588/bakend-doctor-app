@@ -45,6 +45,8 @@ export const getPatient = async (req, res) => {
     }
 };
 
+
+
 export const patchPatient = async (req, res) => {
     try {
         const updated = await patientService.updatePatient(req.params.id, req.body);

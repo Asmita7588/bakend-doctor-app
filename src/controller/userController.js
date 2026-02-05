@@ -2,6 +2,7 @@
 import * as userService from "../services/userService.js";
 export const register = async (req, res) => {
     try {
+        //#swagger.security = [{"bearerAuth": []}]
         //validate required fields
         const { firstName, email, mobileNumber, role, password} = req.body;
         if (!firstName || !email || !mobileNumber || !password || !role) {
