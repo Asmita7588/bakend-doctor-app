@@ -25,7 +25,13 @@ export const login = async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid Credentials" });
     }
-
+//verify user 
+  if (!user.isVerified) {
+        return res.status(403).json({ 
+            success: false, 
+            message: "Account not verified." 
+        });
+    }
     let payload = {
       id: user._id,
       name: user.firstName + " " + user.lastName,

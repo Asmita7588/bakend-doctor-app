@@ -10,6 +10,8 @@ import cors from "cors"
 // import swaggerFile from "./swagger.json" assert { type: 'json' };
 import swaggerUi from "swagger-ui-express"
 import fs from 'fs';
+import { connectRabbitMQ } from './src/config/rabbitMq.js';
+import { startWorker } from './src/worker/emailWorker.js';
 
 const swagger = JSON.parse(
   fs.readFileSync(new URL('./swagger.json', import.meta.url))
@@ -21,11 +23,15 @@ app.use(express.json());
 
 app.use(cors(
     {
-        origin : "http://localhost:3000",
+        origin : "http://localhost:4200",
         credentials: true
     }
 ))
 database();
+
+const startServer = async () => {
+    await connectRabbitMQ(); 
+};
 
 app.use('/api/v1', allRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swagger));
@@ -35,3 +41,5 @@ app.listen(PORT, () => {
     // console.log(`Swagger at http://localhost:${PORT}/api-docs`);
     logger.info(`Server is running on port ${PORT}`);
 });
+startServer();
+startWorker();

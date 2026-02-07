@@ -15,7 +15,7 @@ export const register = async (req, res) => {
         delete userResponse.password;
 
         res.status(201).json({
-            message: "User registered successfully",
+            message: "User registered successfully,",
             user: userResponse
         });
     } catch (error) {
@@ -84,5 +84,17 @@ export const deleteUser = async (req, res) => {
         res.status(200).json({ success: true, message: "User record deleted" });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+export const verifyUserEmailWithOTP = async (req, res) => {
+    try {
+        const { otp, email } = req.body;
+        console.log("OTP" ,otp);
+        const user = await userService.verifyUserEmail(email, otp );
+        if (!user) return res.status(404).json({ message: "user not found" });
+        res.status(200).json({ success: "user verified successfully", data: user });
+    } catch (error) {
+        res.status(400).json({ success: false, message: error.message });
     }
 };
