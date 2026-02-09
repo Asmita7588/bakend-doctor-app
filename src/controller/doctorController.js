@@ -2,6 +2,7 @@ import * as doctorService from '../services/doctorService.js';
 
 export const createDoctorAccount = async (req, res) => {
     try {
+        //#swagger.security = [{"bearerAuth": []}]
         const doctor = await doctorService.createDoctor(req.body);
         res.status(201).json({ success: true, data: doctor });
     } catch (error) {
