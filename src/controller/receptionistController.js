@@ -12,9 +12,9 @@ export const addReceptionist = async (req, res) => {
 export const getAllReceptionists = async (req, res) => {
     try {
         const data = await recepService.getAllReceptionists();
-        res.status(200).json({ success: true, data });
+        res.status(200).json({ success: true, data, couunt : data.length });
     } catch (error) {
-        res.status(500).json({ success: false, message: error.message, couunt : data.length });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 

@@ -9,7 +9,6 @@ export const createAppointment = async (Data) => {
     const patientId = Data.patientId
      const doctorId = Data.doctorId;
       const departmentId = Data.departmentId;
-       const appointmentDate = Data.appointmentDate;
    
         const [patientExists, doctorExists, departmentExists] = await Promise.all([
             Patient.exists({ _id: patientId }),
@@ -25,8 +24,8 @@ export const createAppointment = async (Data) => {
         const today = new Date();
          today.setHours(0, 0, 0, 0);
        
-        console.log("appointmentDate",appointmentDate);
-         console.log("today",today)
+        // console.log("appointmentDate",appointmentDate);
+        //  console.log("today",today)
        if (selectedDate < today) {
         throw new Error("You cannot book an appointment for a past date.");
     }

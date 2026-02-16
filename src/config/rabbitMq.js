@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import amqp from 'amqplib';
 
 let channel = null; 

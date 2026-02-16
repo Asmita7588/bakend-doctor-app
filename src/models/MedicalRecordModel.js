@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Schema } from "mongoose";
 
 const medicalRecordSchema = new Schema(

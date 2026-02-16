@@ -2,7 +2,7 @@
 
 import dotenv from "dotenv"
 dotenv.config();
-import express, { json } from "express";
+import express from "express";
 import database from "./src/config/databaseConn.js";
 import allRoutes from "./src/routes/index.js"
 import {logger} from "./src/config/logger.js"
@@ -35,7 +35,8 @@ const startServer = async () => {
 
 app.use('/api/v1', allRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swagger));
-const PORT =3000 || 8080;
+// eslint-disable-next-line no-undef
+const PORT =process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
     // console.log(`Swagger at http://localhost:${PORT}/api-docs`);

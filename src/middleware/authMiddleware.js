@@ -34,6 +34,7 @@ export const auth = async (req, res, next) => {
     req.role = user.role;
 
     next();
+  // eslint-disable-next-line no-unused-vars
   } catch (error) {
     return res.status(401).json({ message: "Invalid token" });
   }

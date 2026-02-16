@@ -1,4 +1,4 @@
-import { Schema, default as mongoose, model } from "mongoose";
+import { Schema, default as mongoose } from "mongoose";
 
 const receptionistSchema = new Schema(
     {

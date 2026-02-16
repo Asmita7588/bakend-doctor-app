@@ -1,5 +1,4 @@
-import { Schema, default as mongoose, model } from "mongoose";
-import { type } from "node:os";
+import { Schema, default as mongoose } from "mongoose";
 
 const doctorSchema = new Schema(
     {

@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "swagger": "node ./swagger.js"
+    "swagger": "node ./swagger.js",
+    "test1": "mocha ./src/test/appointment.test.js --exit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "author": "",
   "license": "ISC",
@@ -30,5 +33,13 @@
     "swagger-ui-express": "^5.0.1",
     "winston": "^3.19.0",
     "winston-daily-rotate-file": "^5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "chai": "^6.2.2",
+    "eslint": "^10.0.0",
+    "globals": "^17.3.0",
+    "mocha": "^11.7.5",
+    "sinon": "^21.0.1"
   }
 }

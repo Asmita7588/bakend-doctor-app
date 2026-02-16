@@ -53,7 +53,7 @@ export const downloadInvoicePdf = async (req, res) => {
     try {
         const id  = req.params.id;
         
-        const { pdfBuffer, invoice } = await InvoiceService.generateInvoicePdfBuffer(id);
+        const { pdfBuffer } = await InvoiceService.generateInvoicePdfBuffer(id);
 
         res.set({
             'Content-Type': 'application/pdf',
